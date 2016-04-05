@@ -10,7 +10,7 @@
 @mixin text-link($color: palette(blue), $hover: $color, $hover-opacity: 0.6) {
     $transparency: 0.6;
 
-    @if ($color == white or $color = #fff or $color == #ffffff) {
+    @if ($color == white or $color == #fff or $color == #ffffff) {
         $transparency: 0.25;
     }
 

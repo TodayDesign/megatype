@@ -1,0 +1,17 @@
+# This is the official list of people who can contribute
+# (and typically have contributed) code to this repository.
+# The AUTHORS file lists the copyright holders; this file
+# lists people.
+#
+# Names should be added to this file like so:
+#     Name <email address>
+#
+# Please keep the list sorted.
+# (first name; alphabetical order)
+
+Abhishek Suresh  <abi@studiothick.com>
+Giovanni Ferron <giovanni@studiothick.com>
+Matt Sawkill <matt@studiothick.com>
+Nathan Thorpe <nathan@studiothick.com>
+Sam Mularczyk <sam@studiothick.com>
+Tom McLean <tom.mclean@studiothick.com>

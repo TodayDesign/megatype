@@ -1,6 +1,7 @@
 {
   "name": "megatype",
-  "description": "Finesse typographic structure with legendary technique",
+  "version": "1.0.2",
+  "description": "Execute typographic structure with ease",
   "main": "megatype.scss",
   "authors": [
     "tbredin <tom@studiothick.com>"

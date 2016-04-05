@@ -1,14 +1,14 @@
 {
   "name": "megatype",
-  "version": "1.0.1",
-  "private": true,
+  "version": "1.0.2",
+  "private": false,
   "description": "Finesse typographic structure with ease",
   "main": "megatype.scss",
   "scripts": {
     "test": "gulp test"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "The MegaType Project Authors",
+  "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^6.1.1",
     "babel-cli": "^6.6.5",
@@ -44,5 +44,26 @@
     "presets": [
       "es2015"
     ]
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StudioThick/megatype.git"
+  },
+  "keywords": [
+    "sass",
+    "susy",
+    "megatype",
+    "typography",
+    "baseline",
+    "vertical-rhythm",
+    "grid"
+  ],
+  "bugs": {
+    "url": "https://github.com/StudioThick/megatype/issues"
+  },
+  "homepage": "https://github.com/StudioThick/megatype#readme"
 }
