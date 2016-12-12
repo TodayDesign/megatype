@@ -1,0 +1,79 @@
+// =====================================================
+// ----------------- Megatype box items ----------------
+// =====================================================
+// @author Thomas Bredin-Grey <tom@studiothick.com>
+// Megatype: https://github.com/StudioThick/megatype
+// =====================================================
+
+// Type box mixin centers a box inside of the grid. Great for elements like buttons.
+@mixin type-box($size, $line-height, $padding: 0, $bottom: 0, $border: 0) {
+    font-size: $size;
+    line-height: $line-height;
+    display: inline-block;
+
+    @if $border != false or $border != 0 or $border != 0px {
+        @if unit($border) == px {
+            $border: px-to-rem($border);
+        }
+    }
+    @debug $border;
+
+    $total: 0;
+
+    @if $border == false or $border == 0 or $border == 0rem {
+        padding: $padding;
+        $total: $padding + $line-height * $size;
+    } @else {
+        padding: $padding - $border /2;
+        border-width: rem-to-px($border);
+        $total: $padding + $line-height * $size;
+    }
+
+    $remainder: $current-rootsize - (rem-to-px($total) % $current-rootsize);
+    @debug $current-rootsize;
+    @debug $remainder;
+
+    @if $remainder != 0 or $remainder != 0px {
+        position: relative;
+        top: px-to-rem($remainder);
+        margin-bottom: $bottom + px-to-rem($remainder * 2);
+    }
+}
+
+/*
+ Example usage:
+*/
+// .button {
+//     background: none;
+//     text-decoration: none;
+//     margin: 0;
+//     font-weight: bold-of($sans);
+//     font-family: font-family-of($sans);
+//     background-color: tomato;
+
+//     @include type-box(1rem, 1, 0.5rem, 1rem);
+
+//     &,
+//     &:hover,
+//     &:focus {
+//         color: palette(white);
+//         background-image: none;
+//     }
+
+//     &:hover,
+//     &:focus {
+//         background-color: purple;
+//     }
+// }
+
+// .button-outline {
+//     background-color: transparent;
+//     color: tomato;
+//     @include type-box(1rem, 1, 0.5rem, 1rem, 1px);
+//     border-style: solid;
+
+//     &:hover,
+//     &:focus {
+//         border-color: purple;
+//     }
+// }

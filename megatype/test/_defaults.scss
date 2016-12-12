@@ -432,3 +432,38 @@ th {
 	border-bottom: 2px solid palette(black);
 }
 
+.button {
+    background: none;
+    text-decoration: none;
+    margin: 0;
+    font-weight: bold-of($sans);
+    font-family: font-family-of($sans);
+    background-color: tomato;
+
+    @include type-box(1rem, 1, 0.5rem, 1rem);
+
+    &,
+    &:hover,
+    &:focus {
+        color: palette(white);
+        background-image: none;
+    }
+
+    &:hover,
+    &:focus {
+        background-color: purple;
+    }
+}
+
+.button-outline {
+    background-color: transparent;
+    color: tomato;
+    @include type-box(1rem, 1, 0.5rem, 1rem, 1px);
+    border-style: solid;
+
+    &:hover,
+    &:focus {
+        border-color: purple;
+    }
+}
+
