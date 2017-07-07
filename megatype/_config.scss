@@ -61,7 +61,7 @@ $baseline-scaling: false !default;
 // enable formal baseline grid
 // snaps all type to the baseline grid
 // for best results, declare spacing and leading using unitless numbers in typeset mixin
-// can be disabled per-typeset mixin by passing last paramter ($snap) as false
+// can be disabled per-typeset mixin by passing last parameter ($snap) as false
 $baseline-snap: true !default;
 
 // baseline subdivisions specify a fraction of the grid that type can be snapped to.
