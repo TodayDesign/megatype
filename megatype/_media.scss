@@ -141,3 +141,55 @@
         }
     }
 }
+
+// add breakpoint aliases that can be be used with the respond-to() mixin.
+@mixin add-breakpoint-alias($alias, $breakpoint-range, $overwrite: false) {
+    $output: ($alias: $breakpoint-range);
+
+    @if type-of($breakpoint-range) != 'list' or length($breakpoint-range) != 2 {
+        @warn "Your breakpoint range must be a list of exactly two values, corresponding to the parameters of the media() mixin.";
+    }
+    @else if length($breakpoint-aliases) == 0 {
+        $breakpoint-aliases: $output !global;
+    }
+    @else {
+        @if map-has-key($breakpoint-aliases, $alias) and $overwrite != true {
+            @warn "You already have a breakpoint aliased to `#{$alias}`, please choose another breakpoint alias, or pass in `$overwrite: true` to overwrite the previous breakpoint.";
+            $breakpoint-aliases: $breakpoint-aliases !global;
+        }
+        @else if not map-has-key($breakpoint-aliases, $alias) or $overwrite == true {
+            $breakpoint-aliases: map-merge($breakpoint-aliases, $output) !global;
+        }
+    }
+}
+
+// respond to named breakpoints, code based on http://breakpoint-sass.com/
+@mixin respond-to($alias) {
+    @if type-of($breakpoint-aliases) != 'map' {
+        // Just in case someone writes gibberish to the $breakpoints variable.
+        @warn "Your breakpoint aliases aren't a map! `respond-to` expects a map. Please check the value of $breakpoint-aliases variable.";
+        @content;
+    }
+    @else if map-has-key($breakpoint-aliases, $alias) {
+        $breakpoint-range: map-get($breakpoint-aliases, $alias);
+        @if type-of($breakpoint-range) != 'list' or length($breakpoint-range) != 2 {
+            @warn "Your breakpoint range must be a list of exactly two values, corresponding to the parameters of the media() mixin.";
+            @content;
+        }
+        @else {
+            $min: nth($breakpoint-range, 1);
+            $max: nth($breakpoint-range, 2);
+            @include media($min, $max) {
+                @content;
+            }
+        }
+    }
+    @else if not map-has-key($breakpoint-aliases, $alias) {
+        @warn "`#{$alias}` isn't a defined breakpoint! Please add it using `$breakpoints: add-breakpoint(`#{$alias}`, $value);`";
+        @content;
+    }
+    @else {
+        @warn "You haven't created any breakpoints yet! Make some already! `@include add-breakpoint-alias($alias, $breakpoint-range)`";
+        @content;
+    }
+}
