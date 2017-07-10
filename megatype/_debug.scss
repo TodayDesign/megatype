@@ -54,19 +54,32 @@
 
             &:before {
                 @include all-breakpoints {
-                    background:
+                    $grid-rows-bg: null;
+                    $grid-columns-bg:null;
+                    @if $debug-grid-show-rows == true {
                         // vertical grid starts at 0
-                        linear-gradient(to bottom,
-                            transparentize(darken($debug-base, 5%), 0.4) 1px,
-                            transparent 1px, transparent $current-rootsize),
+                        $grid-rows-bg:
+                        "linear-gradient(to bottom, " +
+                            transparentize(darken($debug-base, 5%), 0.4) + " 1px, " +
+                            "transparent 1px, transparent #{$current-rootsize})";
+                    }
+                    @if $debug-grid-show-columns == true {
                         // for horizontal grid, starts at center, is more complex to draw
-                        linear-gradient(to right,
-                            transparent 0px,
-                            transparent $current-rootsize / 2 - 1px,
-                            transparentize(darken($debug-base, 5%), 0.9) $current-rootsize / 2 - 1px,
-                            transparentize(darken($debug-base, 5%), 0.9) $current-rootsize / 2,
-                            transparent $current-rootsize / 2,
-                            transparent $current-rootsize);
+                        $grid-columns-bg:
+                        "linear-gradient(to right, " +
+                            "transparent 0px, " +
+                            "transparent " + ($current-rootsize / 2 - 1px) + ", " +
+                            transparentize(darken($debug-base, 5%), 0.9) + " " + ($current-rootsize / 2 - 1px) + ", " +
+                            transparentize(darken($debug-base, 5%), 0.9) + " " + ($current-rootsize / 2) + ", " +
+                            "transparent " + ($current-rootsize / 2) + ", " +
+                            "transparent " + $current-rootsize + ")";
+                    }
+
+                    $separator: null;
+                    @if $debug-grid-show-rows == true and $debug-grid-show-columns == true {
+                        $separator: ", ";
+                    }
+                    background: #{$grid-rows-bg}#{$separator}#{$grid-columns-bg};
                     background-repeat: repeat;
                     background-position: center top;
                     background-size: $current-rootsize $current-rootsize;

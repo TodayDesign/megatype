@@ -26,8 +26,10 @@ $site-color-names: map-keys($palettes) !default;
 // Debugging
 // ===================================
 
-// debug grid columns, grid, type baseline, & breakpoints
+// debug grid (rows, columns), type baseline, & breakpoints
 $debug-grid: true !default;
+$debug-grid-show-rows: true !default;
+$debug-grid-show-columns: true !default;
 $debug-type: true !default;
 $debug-breakpoints: true !default;
 
