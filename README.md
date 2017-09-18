@@ -162,20 +162,20 @@ First, provide the typeface variable, and then provide `$fontsize`, `$lineheight
 // Heading level 1.
 h1 {
     // Set font-family
-    font-family-of($sans); 
+    font-family: font-family-of($sans); 
     // Set type settings
     @include typeset($font: $sans, $fontsize: 38px, $lineheight: 38px, $leader: 2, $trailer: 2rem);
 }
 
 // Heading level 2.
 h2 {
-    font-family-of($sans); 
+    font-family: font-family-of($sans); 
     @include typeset($sans, 26px, 28px, 2, 1);
 }
 
 // Paragraph.
 p {
-    font-family-of($sans); 
+    font-family: font-family-of($sans); 
     @include typeset($sans, 16px, 2rem, 0, 2);
 }
 ```
