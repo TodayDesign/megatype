@@ -191,7 +191,7 @@ To set type at different breakpoints, our `typeset` mixin needs to know about th
 
 ```scss
 p {
-    font-family-of($sans);
+    font-family: font-family-of($sans);
     @include typeset($sans, 16px, 24px, $leader: 0, $trailer: 2);
 
     // we can apply a single breakpoint, starting with breakpoint key: 1
