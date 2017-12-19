@@ -61,7 +61,7 @@ $baseline-scaling: false !default;
 // enable formal baseline grid
 // snaps all type to the baseline grid
 // for best results, declare spacing and leading using unitless numbers in typeset mixin
-// can be disabled per-typeset mixin by passing last paramter ($snap) as false
+// can be disabled per-typeset mixin by passing last parameter ($snap) as false
 $baseline-snap: true !default;
 
 // baseline subdivisions specify a fraction of the grid that type can be snapped to.
@@ -97,6 +97,24 @@ $breakpoint-map: (
         rootsize:   20px
     )
 ) !default;
+
+// map for semantic retrieval of brekpoints
+//
+// The key is the alias, and the value is a list of two values (min, max)
+// meant to be the arguments of the media() mixin.
+$breakpoint-aliases: (
+    // basic min-max aliases
+    'xs': (0, 1),
+    's':  (1, 2),
+    'm':  (2, 3),
+    'l':  (3, 4),
+    'xl': (4, 0),
+) !default;
+
+// More aliases can be added with the add-breakpoint-alias() mixin.
+//@include add-breakpoint-alias('medium screen', (1, 3));
+//@include add-breakpoint-alias('large screen', (3, 0));
+//@include add-breakpoint-alias('medium or large screen', (1, 0));
 
 // default breakpoint. This is where the default html font size will be set,
 // media queries will be generated to either side to apply rootsizes at remaining breakpoints
